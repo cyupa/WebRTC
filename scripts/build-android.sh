@@ -13,7 +13,6 @@ BRANCH="${BRANCH:-master}"
 
 OUTPUT_DIR="./out"
 COMMON_GN_ARGS="is_debug=${DEBUG} rtc_libvpx_build_vp9=${BUILD_VP9} is_component_build=false rtc_include_tests=false enable_stripping=true use_lld=true"
-PLISTBUDDY_EXEC="/usr/libexec/PlistBuddy"
 
 build_android() {
     local arch=$1

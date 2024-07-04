@@ -1,5 +1,6 @@
 name: WebRTC Android Manual Build
 run-name: WebRTC Android Manual Build
+uses: docker/setup-qemu-action@v3.1.0
 on:
   workflow_dispatch:
     inputs:
@@ -14,11 +15,13 @@ on:
         default: true
         type: boolean
 jobs:
-  Build-Script:
-    runs-on: macos-latest
+  qemu:
+    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Building WebRTC framework
