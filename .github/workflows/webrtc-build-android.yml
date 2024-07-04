@@ -25,6 +25,8 @@ jobs:
           platforms: arm64
       - name: Setup Android NDK
         uses: nttld/setup-ndk@v1.5.0
+        with:
+          ndk-version: r26d
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Building WebRTC framework
