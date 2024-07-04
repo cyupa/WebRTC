@@ -1,6 +1,6 @@
 name: WebRTC Android Manual Build
 run-name: WebRTC Android Manual Build
-uses: docker/setup-qemu-action@v3.1.0
+
 on:
   workflow_dispatch:
     inputs:
