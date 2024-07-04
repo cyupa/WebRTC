@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Building WebRTC framework
