@@ -1,0 +1,35 @@
+name: WebRTC Android Manual Build
+run-name: WebRTC Android Manual Build
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "webRTC branch head. Ex: branch-heads/6167"
+        required: true
+        default: "branch-heads/0000"
+        type: string
+      android:
+        description: "Build Android libraries"
+        required: true
+        default: true
+        type: boolean
+jobs:
+  Build-Script:
+    runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Building WebRTC framework
+        run: |
+          sh clean.sh
+          sh scripts/build.sh
+        env:
+          BRANCH: ${{ inputs.branch }}
+          BUILD_VP9: true
+      - name: Upload framework
+        uses: actions/upload-artifact@v4
+        with:
+          name: WebRTC-Android.zip
+          path: src/out/WebRTC-Android.zip
