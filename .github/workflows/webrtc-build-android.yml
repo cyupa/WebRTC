@@ -24,7 +24,7 @@ jobs:
       - name: Building WebRTC framework
         run: |
           sh clean.sh
-          sh scripts/build.sh
+          sh scripts/build-android.sh
         env:
           BRANCH: ${{ inputs.branch }}
           BUILD_VP9: true
